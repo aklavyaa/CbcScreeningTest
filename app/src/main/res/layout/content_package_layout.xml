@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="@color/cardview_light_background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_margin="@dimen/image_margin"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:scaleType="fitXY"
+            android:src="@drawable/testing"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image_height"/>
+
+
+        <TextView
+            android:textSize="@dimen/title_size"
+            android:textColor="@color/col_text"
+            android:text="Russia attempts to keep Ukraines lights out and heat off as the cold sets in"
+            android:fontFamily="@font/paytoneone_regular"
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/time_size"
+            android:textColor="@color/col_text"
+            android:text="6 hours ago"
+            android:fontFamily="@font/montserrat_variablefont_wght"
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:id="@+id/primary_view"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include layout="@layout/straight_line"/>
+            <TextView
+                android:textSize="@dimen/title_size"
+                android:textColor="@color/col_text"
+                android:text="Kyiv police officers shot down a drone but citizens are told not to try it."
+                android:fontFamily="@font/paytoneone_regular"
+                android:id="@+id/subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:id="@+id/secondary_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/straight_line"/>
+        <TextView
+            android:textSize="@dimen/title_size"
+            android:textColor="@color/col_text"
+            android:text="They are slow, loud and bargain base ment so why is russia using kamikaze drones against ukraine?"
+            android:fontFamily="@font/paytoneone_regular"
+            android:id="@+id/subtitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
