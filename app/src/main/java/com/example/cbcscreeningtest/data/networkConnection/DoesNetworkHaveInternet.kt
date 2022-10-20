@@ -11,6 +11,7 @@ import javax.net.SocketFactory
  */
 object DoesNetworkHaveInternet {
 
+  private val TAG = DoesNetworkHaveInternet::class.java.simpleName
   // Make sure to execute this on a background thread.
   fun execute(socketFactory: SocketFactory): Boolean {
     return try{

@@ -14,7 +14,7 @@ import com.example.cbcscreeningtest.databinding.ActivityMainBinding
 import com.example.cbcscreeningtest.presentation.di.Injector
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class   MainActivity : AppCompatActivity() {
 
     private lateinit var adpater:NewsAdapter
     private val TAG:String = MainActivity::class.java.simpleName

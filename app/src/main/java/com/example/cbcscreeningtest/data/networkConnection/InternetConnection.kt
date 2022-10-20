@@ -12,18 +12,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-val TAG = "C-Manager"
 
-/**
- * Save all available networks with an internet connection to a set (@validNetworks).
- * As long as the size of the set > 0, this LiveData emits true.
- * MinSdk = 21.
- *
- * Inspired by:
- * https://github.com/AlexSheva-mason/Rick-Morty-Database/blob/master/app/src/main/java/com/shevaalex/android/rickmortydatabase/utils/networking/ConnectionLiveData.kt
- */
 class InternetConnection(context: Context) : LiveData<Boolean>() {
-
+  private var TAG = InternetConnection::class.java.simpleName
 
   private lateinit var networkCallback: ConnectivityManager.NetworkCallback
   private val cm = context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -47,10 +38,8 @@ class InternetConnection(context: Context) : LiveData<Boolean>() {
 
   private fun createNetworkCallback() = object : ConnectivityManager.NetworkCallback() {
 
-    /*
-      Called when a network is detected. If that network has internet, save it in the Set.
-      Source: https://developer.android.com/reference/android/net/ConnectivityManager.NetworkCallback#onAvailable(android.net.Network)
-     */
+
+
     override fun onAvailable(network: Network) {
       Log.d(TAG, "onAvailable: ${network}")
       val networkCapabilities = cm.getNetworkCapabilities(network)
@@ -71,16 +60,26 @@ class InternetConnection(context: Context) : LiveData<Boolean>() {
       }
     }
 
-    /*
-      If the callback was registered with registerNetworkCallback() it will be called for each network which no longer satisfies the criteria of the callback.
-      Source: https://developer.android.com/reference/android/net/ConnectivityManager.NetworkCallback#onLost(android.net.Network)
-     */
+
     override fun onLost(network: Network) {
       Log.d(TAG, "onLost: ${network}")
 //      validNetworks.remove(network)
       validNetworks.clear()
       checkValidNetworks()
     }
+
+    override fun onUnavailable() {
+      super.onUnavailable()
+      Log.d(TAG, "onUnavailable: ")
+
+    }
+
+    override fun onLosing(network: Network, maxMsToLive: Int) {
+      super.onLosing(network, maxMsToLive)
+      Log.d(TAG, "onLosing: ")
+
+    }
+
 
   }
 
