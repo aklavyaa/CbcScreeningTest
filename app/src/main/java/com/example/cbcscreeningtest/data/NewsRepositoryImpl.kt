@@ -1,6 +1,6 @@
 package com.example.cbcscreeningtest.data
 
-import com.example.cbcscreeningtest.data.model.dashboard.NewsDashboardModel
+import com.example.cbcscreeningtest.data.model.dashboard.requiredData.NewsDashboardModelItem
 import com.example.cbcscreeningtest.data.repository.dataSource.dashboard.NewsCacheRepo
 import com.example.cbcscreeningtest.data.repository.dataSource.dashboard.NewsLocalDbRepo
 import com.example.cbcscreeningtest.data.repository.dataSource.dashboard.NewsRemoteRepo
@@ -12,7 +12,7 @@ class NewsRepositoryImpl(
     private var cacheRepo: NewsCacheRepo
     ) : NewsRepository {
 
-    suspend fun getNewsFromRemote():NetworkResponse.NetworkResult<NewsDashboardModel>{
+    suspend fun getNewsFromRemote():NetworkResponse.NetworkResult<ArrayList<NewsDashboardModelItem>>{
       var response =  remoteRepo.provideNewsFromRemote()
         var body = response.body()
         if (body!=null && response.isSuccessful){
@@ -23,29 +23,31 @@ class NewsRepositoryImpl(
 
     }
 
-    suspend fun getNewsFromDb():NetworkResponse.NetworkResult<NewsDashboardModel>{
+    suspend fun getNewsFromDb():NetworkResponse.NetworkResult<ArrayList<NewsDashboardModelItem>>{
         var resutl = localDbRepo.getNewsFromDb()
-        if (resutl != null){
-            return NetworkResponse.NetworkResult.Success(resutl as NewsDashboardModel)
+        if (resutl.isNotEmpty()){
+            return NetworkResponse.NetworkResult.Success(resutl)
         } else {
             return getNewsFromRemote()
         }
     }
 
-    suspend fun getNewsFromCache():NetworkResponse.NetworkResult<NewsDashboardModel> {
-        if (cacheRepo.getNewsCache() != null){
-           return NetworkResponse.NetworkResult.Success(cacheRepo.getNewsCache() as NewsDashboardModel)
+    suspend fun getNewsFromCache():NetworkResponse.NetworkResult<ArrayList<NewsDashboardModelItem>> {
+        var resutl = cacheRepo.getNewsCache()
+
+        if (resutl.isNotEmpty() ){
+           return NetworkResponse.NetworkResult.Success(resutl)
         } else {
             return getNewsFromDb()
         }
     }
 
 
-    override suspend fun getNews(): NetworkResponse.NetworkResult<NewsDashboardModel> {
+    override suspend fun getNews(): NetworkResponse.NetworkResult<ArrayList<NewsDashboardModelItem>> {
         return getNewsFromCache()
     }
 
-    override suspend fun updateNews(): NetworkResponse.NetworkResult<NewsDashboardModel> {
+    override suspend fun updateNews(): NetworkResponse.NetworkResult<ArrayList<NewsDashboardModelItem>> {
        return getNewsFromRemote()
 
 

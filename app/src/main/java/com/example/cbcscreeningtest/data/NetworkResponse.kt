@@ -4,6 +4,7 @@ import android.content.res.Resources.getSystem
 import com.bumptech.glide.load.engine.Resource
 import retrofit2.HttpException
 import retrofit2.Response
+import java.io.IOException
 
 class NetworkResponse {
 
@@ -43,7 +44,11 @@ class NetworkResponse {
                 } else {
                    NetworkResult.Error(response.errorBody().toString())
                 }
-            } catch (e: HttpException) {
+            } catch (e:IOException){
+                NetworkResult.Error(e.message?: "Something went wrong")
+
+            }
+            catch (e: HttpException) {
                 NetworkResult.Error(e.message()?: "Something went wrong")
             } catch (e: Throwable) {
                 NetworkResult.Error("Something went wrong")

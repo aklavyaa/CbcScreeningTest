@@ -1,6 +1,6 @@
 package com.example.cbcscreeningtest.data.repository.dataImpl.dashboard
 
-import com.example.cbcscreeningtest.data.model.dashboard.NewsDashboardModelItem
+import com.example.cbcscreeningtest.data.model.dashboard.requiredData.NewsDashboardModelItem
 import com.example.cbcscreeningtest.data.repository.dataSource.dashboard.NewsCacheRepo
 
 class NewsCacheRepoImpl: NewsCacheRepo {
@@ -12,6 +12,6 @@ class NewsCacheRepoImpl: NewsCacheRepo {
 
     override fun saveToCache(list:ArrayList<NewsDashboardModelItem>) {
         newsList.clear()
-        newsList = ArrayList()
+        newsList = list
     }
 }

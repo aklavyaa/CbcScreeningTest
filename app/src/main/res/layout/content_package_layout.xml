@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
-    app:cardElevation="8dp"
+    app:cardElevation="18dp"
     app:cardBackgroundColor="@color/cardview_light_background"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -12,6 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/image"
+
             android:scaleType="fitXY"
             android:src="@drawable/testing"
             android:layout_width="match_parent"
@@ -29,15 +31,7 @@
 
 
 
-        <TextView
-            android:layout_marginTop="8dp"
-            android:textSize="@dimen/time_size"
-            android:textColor="@color/col_text"
-            android:text="6 hours ago"
-            android:fontFamily="@font/montserrat_variablefont_wght"
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
 
         <LinearLayout
             android:layout_marginTop="8dp"
@@ -51,27 +45,39 @@
                 android:textColor="@color/col_text"
                 android:text="Kyiv police officers shot down a drone but citizens are told not to try it."
                 android:fontFamily="@font/paytoneone_regular"
-                android:id="@+id/subtitle1"
+                android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-    <LinearLayout
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        android:id="@+id/secondary_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <include layout="@layout/straight_line"/>
+
         <TextView
-            android:textSize="@dimen/title_size"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/time_size"
             android:textColor="@color/col_text"
-            android:text="They are slow, loud and bargain base ment so why is russia using kamikaze drones against ukraine?"
-            android:fontFamily="@font/paytoneone_regular"
-            android:id="@+id/subtitle2"
+            android:text="6 hours ago"
+            android:fontFamily="@font/montserrat_variablefont_wght"
+            android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-    </LinearLayout>
+<!--    <LinearLayout-->
+
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:orientation="vertical"-->
+<!--        -->
+<!--        android:id="@+id/secondary_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <include layout="@layout/straight_line"/>-->
+<!--        <TextView-->
+<!--            android:textSize="@dimen/title_size"-->
+<!--            android:textColor="@color/col_text"-->
+<!--            android:text="They are slow, loud and bargain base ment so why is russia using kamikaze drones against ukraine?"-->
+<!--            android:fontFamily="@font/paytoneone_regular"-->
+<!--            android:id="@+id/subtitle2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content" />-->
+<!--    </LinearLayout>-->
 
     </LinearLayout>
 
