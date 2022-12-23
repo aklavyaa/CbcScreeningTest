@@ -8,6 +8,5 @@ In this project I've used
 * Room 
 * Retrofit
 
-I was trying something differnet new and got to learn many insights out of it.
 
 Thank You
